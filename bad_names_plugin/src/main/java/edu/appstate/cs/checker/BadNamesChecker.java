@@ -64,6 +64,11 @@ public class BadNamesChecker extends BugChecker implements
                     .setMessage(String.format("%s is too long for a method name, shame on you", methodTree.getName()))
                     .build();
         }
+        if (methodTree.getReturnType().toString().equals("null")) {
+            return buildDescription(methodTree)
+                    .setMessage(String.format("Try not to return null: %s", methodTree.getReturnType().toString()))
+                    .build();
+        }
         // TODO: Remove this, if needed. This is just here because we need to return a
         // Description.
         return Description.NO_MATCH;
@@ -88,6 +93,7 @@ public class BadNamesChecker extends BugChecker implements
 
     @Override
     public Description matchIf(IfTree tree, VisitorState state) {
+        // this does not work
         if (tree.getCondition().toString().equals("false")) {
             return buildDescription(tree)
                     .setMessage(String.format("Dead code: %s", tree))

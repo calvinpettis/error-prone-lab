@@ -1,7 +1,7 @@
 package edu.appstate.cs.examples;
 
 public class CodeWithIf {
-  public static void method() {
+  public static String method() {
     if (true) {
       System.out.println("Hello, program!");
     }
@@ -15,5 +15,6 @@ public class CodeWithIf {
     if (false) {
       System.out.println("I am the greatest programmer to ever live");
     }
+    return null;
   }
 }
